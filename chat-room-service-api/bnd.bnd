@@ -1,0 +1,9 @@
+Bundle-Name: chat-room-service-api
+Bundle-SymbolicName: chat.room.service.api
+Bundle-Version: 1.0.0
+Export-Package: \
+	com.darrylsite.liferay.chat.exception,\
+	com.darrylsite.liferay.chat.model,\
+	com.darrylsite.liferay.chat.service,\
+	com.darrylsite.liferay.chat.service.persistence
+-includeresource: META-INF/service.xml=../chat-room-service/service.xml

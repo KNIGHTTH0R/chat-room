@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="com.darrylsite.liferay.chat" >
+
+	<author>Darryl Kpizingui</author>
+	<namespace>chatRoom</namespace>
+
+	<entity name="Lounge" local-service="true" remote-service="false" >
+
+		<!-- PK fields -->
+
+		<column name="id" type="long" primary="true" />
+
+		<column name="name" type="String" />
+		<column name="priviledge" type="int" />
+		<column name="userId" type="long" />
+		<column name="createDate" type="Date"  />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="Priviledge" return-type="Collection">
+			<finder-column name="priviledge" comparator="&lt;=" />
+		</finder>
+	</entity>
+	
+	<entity name="ChatUser" local-service="true" remote-service="false">
+
+		<!-- PK fields -->
+
+		<column name="id" type="long" primary="true" />
+
+		<column name="pseudo" type="String" />
+		<column name="description" type="String" />
+		<column name="userId" type="long" />
+		<column name="avatar" type="String" />
+
+		<!-- Finder methods -->
+
+		<finder name="Pseudo" return-type="ChatUser">
+			<finder-column name="pseudo" />
+		</finder>
+	</entity>
+	
+	<entity name="Contact" local-service="true" remote-service="false" >
+
+		<!-- PK fields -->
+
+		<column name="id" type="long" primary="true" />
+
+		<column name="category" type="String" />
+		<column name="priviledge" type="int" />
+		<column name="status" type="int" />
+		<column name="chatUserId" type="long" />
+
+		<!-- Finder methods -->
+
+		<finder name="ChatUserId" return-type="Collection">
+			<finder-column name="chatUserId" />
+		</finder>
+	</entity>
+	
+</service-builder>

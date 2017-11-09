@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.darrylsite.liferay.chat.model.ChatUser">
+		<field name="id" type="long" />
+		<field name="pseudo" type="String" />
+		<field name="description" type="String" />
+		<field name="userId" type="long" />
+		<field name="avatar" type="String" />
+	</model>
+	<model name="com.darrylsite.liferay.chat.model.Contact">
+		<field name="id" type="long" />
+		<field name="category" type="String" />
+		<field name="priviledge" type="int" />
+		<field name="status" type="int" />
+		<field name="chatUserId" type="long" />
+	</model>
+	<model name="com.darrylsite.liferay.chat.model.Lounge">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+		<field name="priviledge" type="int" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+</model-hints>

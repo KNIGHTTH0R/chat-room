@@ -1,0 +1,4 @@
+Bundle-Name: chat-room-portlet
+Bundle-SymbolicName: com.darylsite.liferay.chatroom
+Bundle-Version: 1.0.0
+Export-Package: com.darylsite.liferay.chatroom.constants

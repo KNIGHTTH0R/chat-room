@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="com.darrylsite.liferay.chat.service.impl.ChatUserLocalServiceImpl" id="com.darrylsite.liferay.chat.service.ChatUserLocalService" />
+	<bean class="com.darrylsite.liferay.chat.service.persistence.impl.ChatUserPersistenceImpl" id="com.darrylsite.liferay.chat.service.persistence.ChatUserPersistence" parent="basePersistence" />
+	<bean class="com.darrylsite.liferay.chat.service.impl.ContactLocalServiceImpl" id="com.darrylsite.liferay.chat.service.ContactLocalService" />
+	<bean class="com.darrylsite.liferay.chat.service.persistence.impl.ContactPersistenceImpl" id="com.darrylsite.liferay.chat.service.persistence.ContactPersistence" parent="basePersistence" />
+	<bean class="com.darrylsite.liferay.chat.service.impl.LoungeLocalServiceImpl" id="com.darrylsite.liferay.chat.service.LoungeLocalService" />
+	<bean class="com.darrylsite.liferay.chat.service.persistence.impl.LoungePersistenceImpl" id="com.darrylsite.liferay.chat.service.persistence.LoungePersistence" parent="basePersistence" />
+</beans>
