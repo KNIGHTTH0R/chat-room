@@ -106,8 +106,8 @@ public class MessageService   implements MethodExecutor
 
 	private MessageResponse sendMessageToLounge(Session session, JSONArray arguments) throws JSONException
 	{
-		String userId = (String) session.getUserProperties().get("userId");
-		ChatUser chatUser = ChatUserLocalServiceUtil.createChatUser(Long.valueOf(userId));
+		long chatUserId = Long.valueOf(session.getUserProperties().get("chatUserId").toString());
+		ChatUser chatUser = ChatUserLocalServiceUtil.createChatUser(chatUserId);
 		chatUser = ServerContext.getChatusers().get(ServerContext.getChatusers().indexOf(chatUser));
 		
 		String message = arguments.getJSONObject(0).getString("msg");

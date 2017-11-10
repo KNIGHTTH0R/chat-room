@@ -109,10 +109,10 @@ public class LoungeService  implements MethodExecutor
 
 	private MessageResponse joinLounge(Session session, JSONArray arguments) 
 	{
-		String userId = (String) session.getUserProperties().get("userId");
+		long chatUserId = Long.valueOf(session.getUserProperties().get("chatUserId").toString());
 		long loungeId = Long.valueOf(arguments.getJSONObject(0).getLong("id"));
 		
-		ChatUser chatUser = ChatUserLocalServiceUtil.createChatUser(Long.valueOf(userId));
+		ChatUser chatUser = ChatUserLocalServiceUtil.createChatUser(chatUserId);
 		chatUser = ServerContext.getChatusers().get(ServerContext.getChatusers().indexOf(chatUser));
 		
 		Lounge selectedLounge = LoungeLocalServiceUtil.createLounge(loungeId);
@@ -163,7 +163,6 @@ public class LoungeService  implements MethodExecutor
 		  {
 			loungeContainers.nextElement().remove(chatUser);
 		  }
-		  
         }
         
 		MessageResponse response = new MessageResponse();

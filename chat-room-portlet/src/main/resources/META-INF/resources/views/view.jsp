@@ -24,25 +24,26 @@
         </div>
     </div>
     
-    <div class="row">
+    <div class="row" id="chat-main-container">
 
         <div class="conversation-wrap col-md-3" id="chat-user-list">
         </div>
 
-        <div class="message-wrap col-md-8">
-            <div class="msg-wrap" id="chat-messages">
-            </div>
-
-            <div class="send-wrap ">
-                <textarea class="form-control send-message" rows="3" id="chat-msg" data-bind-keypress="sendMessageToLounge"></textarea>
-            </div>
-            <div class="btn-panel">
-                <a href="#" class=" col-md-3 btn   send-message-btn hide"><i class="fa icon-cloud-upload "></i> Add Files</a>
-                <a href="#" class=" col-md-4 text-right btn  send-message-btn pull-right" data-bind-click="sendMessageToLounge" >
-                	<i class="fa icon-share"></i>
-                	 <span> <liferay-ui:message key="send-message" /> </span>
-                </a>
-            </div>
+        <div class="message-wrap col-md-8" id="discussion-container">
+            <div class="msg-wrap" id="chat-messages"></div>
+			
+			<div id="discussion-controls">
+				<div class="send-wrap ">
+	                <textarea class="form-control send-message" rows="1" id="chat-msg" data-bind-keypress="sendMessageToLounge"></textarea>
+	            </div>
+	            <div class="btn-panel">
+	                <a href="#" class=" col-md-3 btn   send-message-btn hide"><i class="fa icon-cloud-upload "></i> Add Files</a>
+	                <a href="#" class=" col-md-4 text-right btn  send-message-btn pull-right" data-bind-click="sendMessageToLounge" >
+	                	<i class="fa icon-share"></i>
+	                	 <span> <liferay-ui:message key="send-message" /> </span>
+	                </a>
+	            </div>
+			</div>
         </div>
     </div>
     </div>
@@ -77,7 +78,11 @@
 <script id="chat-messages-template" type="text/x-handlebars-template">
    <div class="media conversation msg">
                     <a class="pull-left" href="#">
-                        <img class="media-object" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,{{chatUser.avatar}}">
+						{{#if_startWith this.avatar 'http'}}
+                        	<img class="media-object" alt="avatar" style="width: 32px; height: 32px;" src="data:image/png;base64,{{chatUser.avatar}}">
+						{{else}}
+							<img class="media-object" alt="avatar" style="width: 32px; height: 32px;" src="{{chatUser.avatar}}">
+						{{/if_startWith}}
                     </a>
                     <div class="media-body">
                         <small class="pull-right time"><i class="fa icon-time"></i> {{currentTime time}}</small>
@@ -94,7 +99,11 @@
  {{#each chatUsers}}
   <div class="media conversation user-item" data-id="{{this.id}}" >
                 <a class="pull-left" href="#">
-                    <img class="media-object" alt="64x64" style="width: 50px; height: 50px;" src="data:image/png;base64,{{this.avatar}}">
+					{{#if_startWith this.avatar 'http'}}
+                    	<img class="media-object" alt="avatar" style="width: 50px; height: 50px;" src="{{this.avatar}}">
+					{{else}}
+						<img class="media-object" alt="avatar" style="width: 50px; height: 50px;" src="data:image/png;base64,{{this.avatar}}">
+					{{/if_startWith}}
                 </a>
                 <div class="media-body">
                     <h5 class="media-heading">{{this.name}}</h5>

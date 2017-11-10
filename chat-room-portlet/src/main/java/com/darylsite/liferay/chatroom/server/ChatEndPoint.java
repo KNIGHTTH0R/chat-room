@@ -13,6 +13,7 @@ import org.osgi.service.component.annotations.Component;
 import com.darylsite.liferay.chatroom.server.Message.Command;
 import com.darylsite.liferay.chatroom.server.rpc.MethodLocator;
 import com.darylsite.liferay.chatroom.server.rpc.impl.AccountService;
+import com.darylsite.liferay.chatroom.server.rpc.impl.LoungeService;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 
@@ -51,7 +52,9 @@ public class ChatEndPoint extends Endpoint
     public void onClose(Session session, CloseReason reason) 
     {
     	AccountService.getInstance().disconnect(session, null);
+    	LoungeService.getInstance().leaveLounge(session, null);
         connections.remove(session);
+        
     }
 
     public void onError(Session session, Throwable throwable) 

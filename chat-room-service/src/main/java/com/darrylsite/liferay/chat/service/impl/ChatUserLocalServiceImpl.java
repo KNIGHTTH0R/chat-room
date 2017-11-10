@@ -14,6 +14,7 @@
 
 package com.darrylsite.liferay.chat.service.impl;
 
+import com.darrylsite.liferay.chat.model.ChatUser;
 import com.darrylsite.liferay.chat.service.base.ChatUserLocalServiceBaseImpl;
 
 /**
@@ -32,9 +33,8 @@ import com.darrylsite.liferay.chat.service.base.ChatUserLocalServiceBaseImpl;
  */
 public class ChatUserLocalServiceImpl extends ChatUserLocalServiceBaseImpl 
 {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use {@link com.darrylsite.liferay.chat.service.ChatUserLocalServiceUtil} to access the chat user local service.
-	 */
+	public ChatUser create() 
+	{
+		return super.createChatUser(counterLocalService.increment());
+	}
 }

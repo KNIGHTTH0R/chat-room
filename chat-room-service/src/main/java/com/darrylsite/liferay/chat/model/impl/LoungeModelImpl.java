@@ -90,18 +90,18 @@ public class LoungeModelImpl extends BaseModelImpl<Lounge>
 	public static final String DATA_SOURCE = "liferayDataSource";
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 	public static final String TX_MANAGER = "liferayTransactionManager";
-	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(chat.room.service.service.util.ServiceProps.get(
+	public static final boolean ENTITY_CACHE_ENABLED = GetterUtil.getBoolean(com.darrylsite.liferay.chat.room.service.util.ServiceProps.get(
 				"value.object.entity.cache.enabled.com.darrylsite.liferay.chat.model.Lounge"),
 			true);
-	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(chat.room.service.service.util.ServiceProps.get(
+	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.darrylsite.liferay.chat.room.service.util.ServiceProps.get(
 				"value.object.finder.cache.enabled.com.darrylsite.liferay.chat.model.Lounge"),
 			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(chat.room.service.service.util.ServiceProps.get(
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.darrylsite.liferay.chat.room.service.util.ServiceProps.get(
 				"value.object.column.bitmask.enabled.com.darrylsite.liferay.chat.model.Lounge"),
 			true);
 	public static final long PRIVILEDGE_COLUMN_BITMASK = 1L;
 	public static final long NAME_COLUMN_BITMASK = 2L;
-	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(chat.room.service.service.util.ServiceProps.get(
+	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.darrylsite.liferay.chat.room.service.util.ServiceProps.get(
 				"lock.expiration.time.com.darrylsite.liferay.chat.model.Lounge"));
 
 	public LoungeModelImpl() {

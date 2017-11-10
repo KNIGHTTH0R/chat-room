@@ -10,6 +10,9 @@ import com.darrylsite.liferay.chat.service.LoungeLocalServiceUtil;
 
 public class ServerContext 
 {
+   private static final String[] DEFAULT_ROOM_NAMES = new String[]{"Public", "Technical"};
+   private static final int DEFAULT_ROOM_PRILILEDGE = 0;
+   
    private static final List<ChatUser> chatUsers;
    private static final List<Lounge> lounges;
    private static final ConcurrentHashMap<Long, List<ChatUser>> loungeUsers;
@@ -22,17 +25,14 @@ public class ServerContext
 		   lounges = new ArrayList<Lounge>();
 		   loungeUsers = new ConcurrentHashMap<Long, List<ChatUser>>();
 
-		   Lounge defaultLounge = LoungeLocalServiceUtil.createLounge(0); 
-		   defaultLounge.setPriviledge(0);
-		   defaultLounge.setName("Public");
+		   for(String defaultRoomName: DEFAULT_ROOM_NAMES)
+		   {
+			   Lounge defaultLounge = LoungeLocalServiceUtil.createLounge(0); 
+			   defaultLounge.setPriviledge(DEFAULT_ROOM_PRILILEDGE);
+			   defaultLounge.setName(defaultRoomName);
 
-		   lounges.add(defaultLounge);
-
-		   defaultLounge = LoungeLocalServiceUtil.createLounge(1);
-		   defaultLounge.setPriviledge(1);
-		   defaultLounge.setName("Technical");
-
-		   lounges.add(defaultLounge);
+			   lounges.add(defaultLounge);
+		   }
 	   }
    }
    

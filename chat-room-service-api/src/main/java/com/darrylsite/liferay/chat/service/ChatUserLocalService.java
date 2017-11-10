@@ -70,6 +70,8 @@ public interface ChatUserLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.REINDEX)
 	public ChatUser addChatUser(ChatUser chatUser);
 
+	public ChatUser create();
+
 	/**
 	* Creates a new chat user with the primary key. Does not add the chat user to the database.
 	*

@@ -1,0 +1,1 @@
+include  "chat-room-portlet", "chat-room-service", "chat-room-service-api"

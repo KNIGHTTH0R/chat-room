@@ -45,6 +45,11 @@ public class ChatUserLocalServiceWrapper implements ChatUserLocalService,
 		return _chatUserLocalService.addChatUser(chatUser);
 	}
 
+	@Override
+	public com.darrylsite.liferay.chat.model.ChatUser create() {
+		return _chatUserLocalService.create();
+	}
+
 	/**
 	* Creates a new chat user with the primary key. Does not add the chat user to the database.
 	*

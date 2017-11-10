@@ -53,6 +53,10 @@ public class ChatUserLocalServiceUtil {
 		return getService().addChatUser(chatUser);
 	}
 
+	public static com.darrylsite.liferay.chat.model.ChatUser create() {
+		return getService().create();
+	}
+
 	/**
 	* Creates a new chat user with the primary key. Does not add the chat user to the database.
 	*
