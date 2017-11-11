@@ -44,6 +44,11 @@ public class ContactLocalServiceWrapper implements ContactLocalService,
 		return _contactLocalService.addContact(contact);
 	}
 
+	@Override
+	public com.darrylsite.liferay.chat.model.Contact create() {
+		return _contactLocalService.create();
+	}
+
 	/**
 	* Creates a new contact with the primary key. Does not add the contact to the database.
 	*

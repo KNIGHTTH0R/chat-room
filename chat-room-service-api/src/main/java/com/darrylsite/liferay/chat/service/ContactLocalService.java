@@ -70,6 +70,8 @@ public interface ContactLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.REINDEX)
 	public Contact addContact(Contact contact);
 
+	public Contact create();
+
 	/**
 	* Creates a new contact with the primary key. Does not add the contact to the database.
 	*

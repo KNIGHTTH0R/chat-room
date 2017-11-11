@@ -25,6 +25,7 @@ import org.osgi.service.component.annotations.Component;
 		
 		"com.liferay.portlet.footer-portlet-javascript=/js/handlebars-v1.3.0.js",
 		"com.liferay.portlet.footer-portlet-javascript=/js/main.js",
+		
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
 		
 		"javax.portlet.resource-bundle=content.Language",

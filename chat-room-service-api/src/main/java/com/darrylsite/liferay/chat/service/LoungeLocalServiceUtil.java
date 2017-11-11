@@ -53,6 +53,10 @@ public class LoungeLocalServiceUtil {
 		return getService().addLounge(lounge);
 	}
 
+	public static com.darrylsite.liferay.chat.model.Lounge create() {
+		return getService().create();
+	}
+
 	/**
 	* Creates a new lounge with the primary key. Does not add the lounge to the database.
 	*

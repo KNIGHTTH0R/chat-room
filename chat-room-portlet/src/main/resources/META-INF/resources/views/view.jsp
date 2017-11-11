@@ -1,5 +1,6 @@
 <%@ include file="/views/init.jsp" %>
 
+
 <div class="container">
   
 <div id="chat-room" class="hide">
@@ -9,14 +10,14 @@
     <div class="row">
         <div class="col-md-3">
             <div class="btn-panel btn-panel-conversation">
-               <span id="room-title" class=" icon-home"></span>
+               <span id="room-title" class="icon-home-cdn"></span>
             </div>
         </div>
 
-        <div class="spanoffset-1 col-md-7">
+        <div class="spanoffset-1 col-md-9">
             <div class="btn-panel btn-panel-msg">
 
-                <a href="" class="btn  col-md-3  send-message-btn pull-right" data-bind-click="doLeaveLounge" >
+                <a href="" class="btn  send-message-btn pull-right" data-bind-click="doLeaveLounge" >
                     <i class="fa icon-unlock"></i>
                     <span><liferay-ui:message key="logout" /> </span> 
                 </a>
@@ -25,11 +26,11 @@
     </div>
     
     <div class="row" id="chat-main-container">
-
+ 
         <div class="conversation-wrap col-md-3" id="chat-user-list">
         </div>
 
-        <div class="message-wrap col-md-8" id="discussion-container">
+        <div class="message-wrap col-md-9" id="discussion-container">
             <div class="msg-wrap" id="chat-messages"></div>
 			
 			<div id="discussion-controls">
@@ -77,13 +78,13 @@
 
 <script id="chat-messages-template" type="text/x-handlebars-template">
    <div class="media conversation msg">
-                    <a class="pull-left" href="#">
+                    <span class="pull-left">
 						{{#if_startWith this.avatar 'http'}}
                         	<img class="media-object" alt="avatar" style="width: 32px; height: 32px;" src="data:image/png;base64,{{chatUser.avatar}}">
 						{{else}}
 							<img class="media-object" alt="avatar" style="width: 32px; height: 32px;" src="{{chatUser.avatar}}">
 						{{/if_startWith}}
-                    </a>
+                    </span>
                     <div class="media-body">
                         <small class="pull-right time"><i class="fa icon-time"></i> {{currentTime time}}</small>
 
@@ -98,13 +99,13 @@
 <script id="chat-users-template" type="text/x-handlebars-template">
  {{#each chatUsers}}
   <div class="media conversation user-item" data-id="{{this.id}}" >
-                <a class="pull-left" href="#">
+                <span class="pull-left" >
 					{{#if_startWith this.avatar 'http'}}
                     	<img class="media-object" alt="avatar" style="width: 50px; height: 50px;" src="{{this.avatar}}">
 					{{else}}
 						<img class="media-object" alt="avatar" style="width: 50px; height: 50px;" src="data:image/png;base64,{{this.avatar}}">
 					{{/if_startWith}}
-                </a>
+                </span>
                 <div class="media-body">
                     <h5 class="media-heading">{{this.name}}</h5>
                     <small>{{this.description}}</small>

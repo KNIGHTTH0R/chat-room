@@ -14,6 +14,7 @@
 
 package com.darrylsite.liferay.chat.service.impl;
 
+import com.darrylsite.liferay.chat.model.Contact;
 import com.darrylsite.liferay.chat.service.base.ContactLocalServiceBaseImpl;
 
 /**
@@ -30,10 +31,10 @@ import com.darrylsite.liferay.chat.service.base.ContactLocalServiceBaseImpl;
  * @see ContactLocalServiceBaseImpl
  * @see com.darrylsite.liferay.chat.service.ContactLocalServiceUtil
  */
-public class ContactLocalServiceImpl extends ContactLocalServiceBaseImpl {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use {@link com.darrylsite.liferay.chat.service.ContactLocalServiceUtil} to access the contact local service.
-	 */
+public class ContactLocalServiceImpl extends ContactLocalServiceBaseImpl 
+{
+	public Contact create() 
+	{
+		return super.createContact(counterLocalService.increment());
+	}
 }

@@ -14,6 +14,7 @@
 
 package com.darrylsite.liferay.chat.service.impl;
 
+import com.darrylsite.liferay.chat.model.Lounge;
 import com.darrylsite.liferay.chat.service.base.LoungeLocalServiceBaseImpl;
 
 /**
@@ -30,10 +31,10 @@ import com.darrylsite.liferay.chat.service.base.LoungeLocalServiceBaseImpl;
  * @see LoungeLocalServiceBaseImpl
  * @see com.darrylsite.liferay.chat.service.LoungeLocalServiceUtil
  */
-public class LoungeLocalServiceImpl extends LoungeLocalServiceBaseImpl {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use {@link com.darrylsite.liferay.chat.service.LoungeLocalServiceUtil} to access the lounge local service.
-	 */
+public class LoungeLocalServiceImpl extends LoungeLocalServiceBaseImpl 
+{
+	public Lounge create() 
+	{
+		return super.createLounge(counterLocalService.increment());
+	}
 }

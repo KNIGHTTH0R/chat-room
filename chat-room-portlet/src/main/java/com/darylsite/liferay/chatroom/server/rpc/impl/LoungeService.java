@@ -149,21 +149,19 @@ public class LoungeService  implements MethodExecutor
 	
 	public MessageResponse leaveLounge(Session session, JSONArray arguments)
 	{
-        String userId = (String) session.getUserProperties().get("userId");
-        
-        if(userId != null)
-        {
-        		
-		  ChatUser chatUser = ChatUserLocalServiceUtil.createChatUser(Long.valueOf(userId));
-		  chatUser = ServerContext.getChatusers().get(ServerContext.getChatusers().indexOf(chatUser));
-		
-		  Enumeration<List<ChatUser>> loungeContainers = ServerContext.getLoungeusers().elements();
-		
-		  while(loungeContainers.hasMoreElements())
-		  {
-			loungeContainers.nextElement().remove(chatUser);
-		  }
-        }
+		if(session.isOpen())
+		{
+			long chatUserId = Long.valueOf(session.getUserProperties().get("chatUserId").toString());
+			ChatUser chatUser = ChatUserLocalServiceUtil.createChatUser(chatUserId);
+			chatUser = ServerContext.getChatusers().get(ServerContext.getChatusers().indexOf(chatUser));
+			
+			Enumeration<List<ChatUser>> loungeContainers = ServerContext.getLoungeusers().elements();
+			
+			  while(loungeContainers.hasMoreElements())
+			  {
+				loungeContainers.nextElement().remove(chatUser);
+			  }
+		}
         
 		MessageResponse response = new MessageResponse();
 		response.setCommand(Command.RESULT);
@@ -181,20 +179,47 @@ public class LoungeService  implements MethodExecutor
 		long loungeId = Long.valueOf(arguments.getJSONObject(0).getLong("id"));
 		
 		List<ChatUser> selectedLoungeContainer = ServerContext.getLoungeusers().get(loungeId);
-		
         JSONArray chatUsers = JSONFactoryUtil.createJSONArray();
-		
-		for(ChatUser chatUser: selectedLoungeContainer)
+        
+        List<ChatUser> usersToRemove = new ArrayList<>();
+        
+		if(selectedLoungeContainer != null)
 		{
-			JSONObject obj = JSONFactoryUtil.createJSONObject();
-			obj.put("name", chatUser.getPseudo());
-			obj.put("description", chatUser.getDescription());
-			obj.put("id", chatUser.getId());
-			obj.put("avatar", chatUser.getAvatar());
-			
-			chatUsers.put(obj);
+			selectedLoungeContainer.forEach(chatUser->
+	        {
+	        	//We check the session
+				Session localession = AccountService.getAccountsessions().get(chatUser.getId());
+				if(localession == null)
+				{
+					ServerContext.getChatusers().remove(chatUser);
+					usersToRemove.add(chatUser);
+					return;
+				}
+				
+				if(!localession.isOpen())
+				{
+					ServerContext.getChatusers().remove(chatUser);
+					usersToRemove.add(chatUser);
+					AccountService.getAccountsessions().remove(chatUser.getId());
+					return;
+				}
+				
+				JSONObject obj = JSONFactoryUtil.createJSONObject();
+				obj.put("name", chatUser.getPseudo());
+				obj.put("description", chatUser.getDescription());
+				obj.put("id", chatUser.getId());
+				obj.put("avatar", chatUser.getAvatar());
+				
+				chatUsers.put(obj);
+	        });
 		}
-
+        
+		for(ChatUser chatUser: usersToRemove)
+		{
+			selectedLoungeContainer.remove(chatUser);
+		}
+		
+		
 		MessageResponse response = new MessageResponse();
 		response.setCommand(Command.RESULT);
 

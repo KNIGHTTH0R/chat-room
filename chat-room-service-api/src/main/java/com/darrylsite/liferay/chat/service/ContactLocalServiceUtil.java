@@ -53,6 +53,10 @@ public class ContactLocalServiceUtil {
 		return getService().addContact(contact);
 	}
 
+	public static com.darrylsite.liferay.chat.model.Contact create() {
+		return getService().create();
+	}
+
 	/**
 	* Creates a new contact with the primary key. Does not add the contact to the database.
 	*

@@ -44,6 +44,11 @@ public class LoungeLocalServiceWrapper implements LoungeLocalService,
 		return _loungeLocalService.addLounge(lounge);
 	}
 
+	@Override
+	public com.darrylsite.liferay.chat.model.Lounge create() {
+		return _loungeLocalService.create();
+	}
+
 	/**
 	* Creates a new lounge with the primary key. Does not add the lounge to the database.
 	*

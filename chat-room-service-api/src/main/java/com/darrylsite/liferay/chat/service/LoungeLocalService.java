@@ -70,6 +70,8 @@ public interface LoungeLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.REINDEX)
 	public Lounge addLounge(Lounge lounge);
 
+	public Lounge create();
+
 	/**
 	* Creates a new lounge with the primary key. Does not add the lounge to the database.
 	*
