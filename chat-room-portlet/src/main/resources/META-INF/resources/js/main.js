@@ -17,7 +17,7 @@ AUI().use(
 				loungeId: -1,
 				
 				__containerClass: '.chat-room-portlet',
-				__welcome_message_template : "** I just entered the room. Didn't I look awesome with my given picture and name?",
+				__welcome_message_template : "** I just entered the room. Don't I look awesome with my given picture and name?",
 				
 				__init : function()
 				{
