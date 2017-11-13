@@ -26,7 +26,7 @@
     
     <div class="row" id="chat-main-container">
 
-        <div class="conversation-wrap col-md-3 hidden-sm hidden-xm" id="chat-user-list">
+        <div class="conversation-wrap col-md-3 hidden-sm hidden-xs" id="chat-user-list">
 
         </div>
 

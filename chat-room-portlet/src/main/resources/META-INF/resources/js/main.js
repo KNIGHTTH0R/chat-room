@@ -66,8 +66,6 @@ AUI().use(
 						Liferay.ChatRoom.chatUser = body.chatUser;
 						Liferay.ChatRoom.__connected = true;
 						Liferay.ChatRoom.triggerConnected();
-						
-						A.one('textarea#chat-msg').setStyle('backgroundImage', Liferay.ChatRoom.chatUser.avatar);
 				},
 				
 				doLeaveLounge: function()
@@ -156,6 +154,8 @@ AUI().use(
 					Liferay.ChatRoom.loungeId = body.loungeId;
 					Liferay.ChatRoom.IntervalLoungeContactHandler  = setInterval(Liferay.ChatRoom.getLoungeContacts, 5000);
 					Liferay.ChatRoom.getLoungeContacts();
+					
+					A.one('textarea#chat-msg').setStyle('backgroundImage', 'url('+ Liferay.ChatRoom.chatUser.avatar + ')');
 				},
 				
 				getLoungeContacts: function()
