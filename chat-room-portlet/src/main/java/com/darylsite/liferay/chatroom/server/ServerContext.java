@@ -10,7 +10,7 @@ import com.darrylsite.liferay.chat.service.LoungeLocalServiceUtil;
 
 public class ServerContext 
 {
-   private static final String[] DEFAULT_ROOM_NAMES = new String[]{"Public", "Technical"};
+   private static final String[] DEFAULT_ROOM_NAMES = new String[]{"Public", "Game", "Technical", "Smart Genius"};
    private static final int DEFAULT_ROOM_PRILILEDGE = 0;
    
    private static final List<ChatUser> chatUsers;
@@ -27,7 +27,7 @@ public class ServerContext
 
 		   for(String defaultRoomName: DEFAULT_ROOM_NAMES)
 		   {
-			   Lounge defaultLounge = LoungeLocalServiceUtil.createLounge(0); 
+			   Lounge defaultLounge = LoungeLocalServiceUtil.create(); 
 			   defaultLounge.setPriviledge(DEFAULT_ROOM_PRILILEDGE);
 			   defaultLounge.setName(defaultRoomName);
 

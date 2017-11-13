@@ -78,7 +78,12 @@ public class ChatEndPoint extends Endpoint
         	{
         		if(session.isOpen())
         		{
-        			session.getAsyncRemote().sendText(response.toJson());
+        			try
+        			{
+        				session.getAsyncRemote().sendText(response.toJson());
+        			}
+        			catch (IllegalStateException e) {}
+        			
         		}
         	}
         }

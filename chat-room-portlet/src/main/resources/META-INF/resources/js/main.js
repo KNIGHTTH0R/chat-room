@@ -50,13 +50,11 @@ AUI().use(
 								
 				doConnect: function(evt)
 				{
-					var userId = Liferay.ThemeDisplay.getUserId();
-					
 					var message = {
 							        "command": Liferay.ChatRoom.COMMAND_RPC, 
 							        "body": {
 							        	      "name": "connect",
-							        	      "args": [{"userId": userId}]
+							        	      "args": [{"userPseudo": ''}]
 							                }
 							      };
 					
@@ -214,9 +212,9 @@ AUI().use(
 					var template = Handlebars.compile(source);
 					var html = template(body);
 					
-					A.one(Liferay.ChatRoom.__containerClass +" #chat-messages").append(html);
-					
-					A.one(Liferay.ChatRoom.__containerClass +" #chat-messages")
+					var chatMessagesNode = A.one(Liferay.ChatRoom.__containerClass +" #chat-messages");
+					chatMessagesNode.append(html);
+					Liferay.ChatRoom._scrollToBottom(chatMessagesNode.get('id'));
 				},
 				
 				__bind: function()
@@ -279,7 +277,12 @@ AUI().use(
 				    return dateTime;
 				},
 				
-			};
+				_scrollToBottom: function(id)
+				{
+					   var element = document.getElementById(id);
+					   element.scrollTop = element.scrollHeight - element.clientHeight;
+				}
+	};
 	}
 	);
 

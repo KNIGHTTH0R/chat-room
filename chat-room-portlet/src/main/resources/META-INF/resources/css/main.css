@@ -9,8 +9,8 @@
 .chat-room-portlet  .conversation 
 {
 	padding: 5px;
-	border-bottom: 1px solid #ddd;
 	margin: 0;
+	border-bottom: 1px solid #ddd;
 }
 
 .chat-room-portlet  .message-wrap 
@@ -22,14 +22,15 @@
 .chat-room-portlet  .msg 
 {
 	padding: 5px;
-	/*border-bottom:1px solid #ddd;*/
 	margin: 0;
+	border-bottom:1px solid #ddd;
 }
 
 .chat-room-portlet  .msg-wrap 
 {
 	padding: 10px;
 	min-height: 400px;
+	max-height: 400px;
 	overflow: auto;
 }
 
@@ -96,6 +97,11 @@
 .chat-room-portlet  .btn-panel-conversation .btn:first-child 
 {
 	border-right: 1px solid #ddd;
+}
+
+.chat-room-portlet  .conversation-wrap .media-heading 
+{
+	padding-top: 10px;
 }
 
 .chat-room-portlet  .msg-wrap .media-heading 
@@ -209,4 +215,13 @@
     background-size: 18px 18px;
     background-position: left;
     padding-left: 20px;
+}
+
+.chat-room-portlet  .icon-home-cdn
+{
+	background-image:url("https://png.icons8.com/collaboration/office/30/000000");
+	background-repeat: no-repeat;
+	background-position: left;
+	padding: 40px;
+    font-weight: bold;
 }
