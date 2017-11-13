@@ -67,13 +67,14 @@ public class ChatEndPoint extends Endpoint
     }
 
     public void handleMessage(Session session, String msg) throws Exception
-    { 	
+    {
     	Message message = new Message();
     	message.fromJson(msg);
     	        
         if(message.getType() == Command.rpc)
         {
         	MessageResponse response = MethodLocator.execute(session, message.getName(), message.getArguments());
+        	
         	if(response != null)
         	{
         		if(session.isOpen())

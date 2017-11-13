@@ -35,7 +35,7 @@ public class LoungeService  implements MethodExecutor
             {
 		      GET_LOUNGE_LIST, LEAVE_LOUNGE, JOIN_LOUNGE, GET_LOUNGE_CONTACTS
             };
-	
+		
 	@Override
 	public void registerMethodes(BiConsumer<MethodExecutor, String> method) 
 	{
@@ -141,8 +141,10 @@ public class LoungeService  implements MethodExecutor
 		JSONObject result = JSONFactoryUtil.createJSONObject();
 		result.put("method", "handleJoinLounge");
 		result.put("loungeId", loungeId);
-		result.put("loungeName", selectedLounge.getName());		
+		result.put("loungeName", selectedLounge.getName());
 		response.setBody(result);
+		
+		
 		
 		return response;
 	}
@@ -218,7 +220,6 @@ public class LoungeService  implements MethodExecutor
 		{
 			selectedLoungeContainer.remove(chatUser);
 		}
-		
 		
 		MessageResponse response = new MessageResponse();
 		response.setCommand(Command.RESULT);

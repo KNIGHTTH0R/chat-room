@@ -17,6 +17,7 @@ AUI().use(
 				loungeId: -1,
 				
 				__containerClass: '.chat-room-portlet',
+				__welcome_message_template : "** I just entered the room. Didn't I look awesome with my given picture and name?",
 				
 				__init : function()
 				{
@@ -156,6 +157,9 @@ AUI().use(
 					Liferay.ChatRoom.getLoungeContacts();
 					
 					A.one('textarea#chat-msg').setStyle('backgroundImage', 'url('+ Liferay.ChatRoom.chatUser.avatar + ')');
+					
+					//Welcome message
+					Liferay.ChatRoom.sendTextMessageToLounge(Liferay.ChatRoom.__welcome_message_template);
 				},
 				
 				getLoungeContacts: function()
@@ -187,17 +191,21 @@ AUI().use(
 				sendMessageToLounge: function()
 				{
 					var msg = A.one(Liferay.ChatRoom.__containerClass + ' #chat-msg').get('value');
-					
 					if(!msg) return;
 					
 					A.one(Liferay.ChatRoom.__containerClass + ' #chat-msg').set('value', '');
-					 
+					
+					Liferay.ChatRoom.sendTextMessageToLounge(msg);
+				},
+				
+				sendTextMessageToLounge: function(message)
+				{
 					var message = {
 					        "command": Liferay.ChatRoom.COMMAND_RPC, 
 					        "body": {
 					        	      "name": "sendMessageToLounge",
 					        	      "args": [{'loungeId': Liferay.ChatRoom.loungeId,
-					        	    	        'msg': msg
+					        	    	        'msg': message
 					        	    	       }]
 					                }
 					      };
