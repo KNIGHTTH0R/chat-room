@@ -93,8 +93,6 @@ public class AccountService implements MethodExecutor
 			}
 			else
 			{
-				//Image image = ImageLocalServiceUtil.fetchImage(user.getPortraitId());
-				
 				if(!user.isDefaultUser())
 				{
 					chatUser.setPseudo(user.getScreenName());

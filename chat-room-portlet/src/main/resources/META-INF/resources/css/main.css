@@ -201,3 +201,12 @@
 	position: relative;
 	bottom: 0px;
 }
+
+.chat-room-portlet  textarea#chat-msg
+{
+	/* background-image: url(https://hack-nabster7.wedeploy.io/image/layout_set_logo?img_id=20187&t=1510565809891); */
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: left;
+    padding-left: 20px;
+}
